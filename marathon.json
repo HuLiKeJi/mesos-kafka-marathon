@@ -1,0 +1,50 @@
+{
+  "id": "/kafka",
+  "cmd": null,
+  "cpus": 0.5,
+  "mem": 128,
+  "disk": 1024,
+  "instances": 2,
+  "container": {
+    "type": "DOCKER",
+    "volumes": [
+      {
+        "hostPath": "/tmp/kafka",
+        "containerPath": "/kafka",
+        "mode": "RW"
+      }
+    ],
+    "docker": {
+      "image": "hulikeji/mesos-kafka-marathon",
+      "network": "HOST",
+      "portMappings": null,
+      "privileged": false,
+      "parameters": [],
+      "forcePullImage": false
+    }
+  },
+  "labels": {},
+  "portDefinitions": [
+    {
+      "port": 10000,
+      "protocol": "tcp",
+      "name": "kafka",
+      "labels": {}
+    }
+  ],
+  "env": {
+    "KAFKA_NUM_NETWORK_THREADS": "3",
+    "KAFKA_NUM_IO_THREADS": "8",
+    "KAFKA_SOCKET_SEND_BUFFER_BYTES": "102400",
+    "KAFKA_SOCKET_RECEIVE_BUFFER_BYTES": "102400",
+    "KAFKA_SOCKET_REQUEST_MAX_BYTES": "104857600",
+    "KAFKA_NUM_PARTITIONS": "3",
+    "KAFKA_NUM_RECOVERY_THREADS_PER_DATA_DIR": "1",
+    "KAFKA_LOG_RETENTION_HOURS": "168",
+    "KAFKA_LOG_SEGMENT_BYTES": "1073741824",
+    "KAFKA_LOG_RETENTION_CHECK_INTERVAL_MS": "300000",
+    "KAFKA_ZOOKEEPER_CONNECT": "mesos-1:2181,mesos-2:2181,mesos-3:2181",
+    "KAFKA_ZOOKEEPER_CONNECTION_TIMEOUT_MS": "6000"
+  },
+  "healthChecks": []
+}
