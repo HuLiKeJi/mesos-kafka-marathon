@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ -z "$KAFKA_PORT" ]]; then
+    # make sure in Marathon json, have one port configured named "kafka"
+    export KAFKA_PORT=$PORT_KAFKA
+fi
+
 if [[ -z "$START_TIMEOUT" ]]; then
     START_TIMEOUT=600
 fi
