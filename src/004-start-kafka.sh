@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # first, run setup
-./kafka-setup.sh
+kafka-setup.sh
 
 KAFKA_PID=0
 
