@@ -16,7 +16,7 @@ VOLUME ["/kafka"]
 # adding setup and run scripts
 ADD src/002-kafka-setup.sh /usr/bin/kafka-setup.sh
 ADD src/003-create-topics.sh /usr/bin/create-topics.sh
-ADD src/003-start-kafka.sh /tmp/start-kafka.sh
+ADD src/004-start-kafka.sh /tmp/start-kafka.sh
 ADD src/999-test.sh /tmp/test.sh
 
 CMD ["/tmp/test.sh"]
