@@ -1,17 +1,22 @@
 {
   "id": "/kafka",
-  "cmd": null,
   "cpus": 0.5,
-  "mem": 128,
-  "disk": 1024,
-  "instances": 2,
+  "mem": 1024,
+  "instances": 3,
   "container": {
     "type": "DOCKER",
     "volumes": [
       {
-        "hostPath": "/tmp/kafka",
         "containerPath": "/kafka",
+        "hostPath": "kafka",
         "mode": "RW"
+      },
+      {
+        "containerPath": "kafka",
+        "mode": "RW",
+        "persistent": {
+          "size": 1024
+        }
       }
     ],
     "docker": {
@@ -45,6 +50,9 @@
     "KAFKA_LOG_RETENTION_CHECK_INTERVAL_MS": "300000",
     "KAFKA_ZOOKEEPER_CONNECT": "mesos-1:2181,mesos-2:2181,mesos-3:2181",
     "KAFKA_ZOOKEEPER_CONNECTION_TIMEOUT_MS": "6000"
+  },
+  "residency": {
+    "taskLostBehavior": "WAIT_FOREVER"
   },
   "healthChecks": []
 }

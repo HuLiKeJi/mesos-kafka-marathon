@@ -17,12 +17,13 @@ if [[ -z "$KAFKA_ADVERTISED_HOST_NAME" ]]; then
     export KAFKA_ADVERTISED_HOST_NAME=$HOST
 fi
 if [[ -z "$KAFKA_BROKER_ID" ]]; then
-    # By default auto allocate broker ID
-    export KAFKA_BROKER_ID=-1
+    # allocate task ID for broker ID
+    # setting up persistent storage locks the tasks, so it is good to keep the broker id consistent
+    export KAFKA_BROKER_ID=$MESOS_TASK_ID
 fi
 if [[ -z "$KAFKA_LOG_DIRS" ]]; then
-    # write logs to mesos-sandbox location for easy access
-    export KAFKA_LOG_DIRS="$MESOS_SANDBOX/kafka-logs"
+    # write logs to the persistent storage location, which Marathon json needs to match
+    export KAFKA_LOG_DIRS="/kafka"
 fi
 
 ############################################################################
