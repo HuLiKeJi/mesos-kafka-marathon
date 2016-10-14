@@ -17,9 +17,8 @@ if [[ -z "$KAFKA_ADVERTISED_HOST_NAME" ]]; then
     export KAFKA_ADVERTISED_HOST_NAME=$HOST
 fi
 if [[ -z "$KAFKA_BROKER_ID" ]]; then
-    # allocate task ID for broker ID
-    # setting up persistent storage locks the tasks, so it is good to keep the broker id consistent
-    export KAFKA_BROKER_ID=$MESOS_TASK_ID
+    # use script to dynamically look at zookeeper and set broker ids
+    export KAFKA_BROKER_ID=$1
 fi
 if [[ -z "$KAFKA_LOG_DIRS" ]]; then
     # write logs to the persistent storage location, which Marathon json needs to match

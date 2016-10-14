@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # first, run setup
-kafka-setup.sh
+kafka-setup.sh $(get-broker-id.py $MARATHON_APP_LABEL_INSTANCES)
 
 KAFKA_PID=0
 

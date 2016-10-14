@@ -28,7 +28,9 @@
       "forcePullImage": false
     }
   },
-  "labels": {},
+  "labels": {
+    "instances": "100"
+  },
   "portDefinitions": [
     {
       "port": 10000,
