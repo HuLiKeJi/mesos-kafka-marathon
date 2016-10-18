@@ -6,7 +6,7 @@ MAINTAINER HuLiKeJi
 RUN apk add --update unzip wget curl jq coreutils
 
 # download Kafka
-ENV KAFKA_VERSION="0.10.0.1" SCALA_VERSION="2.11"
+ENV KAFKA_VERSION="0.9.0.1" SCALA_VERSION="2.11"
 ADD src/001-download-kafka.sh /tmp/download-kafka.sh
 RUN /tmp/download-kafka.sh && \
     tar xfz /tmp/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz -C /opt && \
