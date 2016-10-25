@@ -1,5 +1,9 @@
 # Apache Kafka Docker Image Running on Marathon
 
+## Introduction
+
+This is a Docker Image to run [Apache Kafka](http://kafka.apache.org/) on [Apache Mesos](http://mesos.apache.org/) via [Marathon](https://github.com/mesosphere/marathon).
+
 ## Motivation
 
 Currently there is a solution out there that are available for running Apache Kafka on Mesos: [mesos/kafka](https://github.com/mesos/kafka) Scheduler and it is seemingly a pretty good managed solution, but it seems to be relatively out of date and no maintainers are active.
